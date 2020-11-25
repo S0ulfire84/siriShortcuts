@@ -2,16 +2,20 @@
   "name": "rutershortcuts",
   "version": "1.0.0",
   "description": "Ruter shortcuts for Siri to use from iPhone",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "hotswap": "nodemon index.js",
+    "deploy": "gh-pages -d build"
   },
   "author": "Alejandro Saksida",
   "license": "ISC",
   "dependencies": {
     "@entur/sdk": "^2.0.0",
-    "express": "^4.17.1",
-    "node-github-pages": "^0.1.1"
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }

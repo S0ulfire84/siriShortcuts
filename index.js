@@ -1,27 +1,24 @@
+const PORT = process.env.PORT || 5000
+
 const createEnturService = require('@entur/sdk').default
 const TypeName = require('@entur/sdk').TypeName
+
 
 var express = require('express');
 var app = express();
 
+const express = require('express')
+const path = require('path')
+
+/*express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+*/
+
 const service = createEnturService({ clientName: 'alejandrosaksida-ruter-sirishortcuts' })
-
-var pages = require("node-github-pages")(app, {
-    static: "public", // Static directory path(css, js...)
-    path: "docs" // Output path
-  });
-  pages.renderFiles([{
-    "view": "index",
-    "url": "",
-    "options": { title: "Express" }
-  },
-  {
-    "view": "second",
-    "url": "/second",
-    "options": { title: "second page" }
-  }
-  ]);
-
 
 
 app.get('/', function (req, res) {
@@ -75,6 +72,6 @@ modes: ['foot', 'metro']
 
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(PORT, function () {
+  console.log('Example app listening on port '+PORT+'!');
 });
