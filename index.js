@@ -7,10 +7,10 @@ const TypeName = require('@entur/sdk').TypeName
 var express = require('express');
 var app = express();
 
-const express = require('express')
+/*const express = require('express')
 const path = require('path')
 
-/*express()
+express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
