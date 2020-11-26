@@ -21,7 +21,7 @@ express()
 const service = createEnturService({ clientName: 'alejandrosaksida-ruter-sirishortcuts' })
 
 
-app.get('/', function (req, res) {
+app.get('/berg', function (req, res) {
   //res.send('Hello World!');
 
   //Berg: NSR:StopPlace:6168 mot sentrum
@@ -58,16 +58,23 @@ modes: ['foot', 'metro']
 
     const arrivalTimes = result.map(elem=>elem.expectedDepartureTime)
 
-    var a = new Date(); // Current date now.
-    var b = new Date(arrivalTimes[0]); // Start of 2010.
+    const a = new Date(); // Current date now.
+    const b = new Date(arrivalTimes[0]); // Start of 2010.
 
-    var d = (b-a); // Difference in milliseconds.
-    var seconds = parseInt((b-a)/1000);
-    var minutes = parseInt(seconds / 60);
+    const d = (b-a); // Difference in milliseconds.
+    const seconds = parseInt((b-a)/1000);
+    const minutes = parseInt(seconds / 60);
 
+    const secondsOfMinutes = seconds - minutes * 60;
     //console.log(result);
     //res.send({time: arrivalTimes[0], current:a, b:b, d:minutes+" minutes from now"});
-    res.send("Berg to center leaves in "+minutes+" minutes from now")
+    let response = "Berg to center leaves in "+minutes+" minutes and "+ secondsOfMinutes + "seconds from now.";
+    if (seconds < 70) response += "You'll have to dash to reach it."
+    else if (seconds < 60 * 2) response += "Run Forest, Run!"
+    else if (seconds < 60 * 4) response += "Leave now and power-walk."
+    else if (seconds < 60 * 6) response += "You'll catch walking it if you leave now."
+    else response += "You can still wait " + minutes - 6 +" minutes, but don't fall asleep."
+    res.send(response);
 });
 
 });
